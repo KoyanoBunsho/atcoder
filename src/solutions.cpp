@@ -33,6 +33,7 @@ typedef vector<vi> vvi;
 typedef vector<ll> vl;
 typedef vector<P> vp;
 typedef vector<T> vt;
+int getInt(){int x;scanf("%d",&x);return x;}
 template<typename T>istream& operator>>(istream&i,v(T)&v){rep(j,sz(v))i>>v[j];return i;}
 template<typename T>string join(const v(T)&v){stringstream s;rep(i,sz(v))s<<' '<<v[i];return s.str().substr(1);}
 template<typename T>ostream& operator<<(ostream&o,const v(T)&v){if(sz(v))o<<join(v);return o;}
@@ -44,22 +45,39 @@ template<typename T>ll suma(const v(T)&a){ll res(0);for(auto&&x:a)res+=x;return 
 const double eps = 1e-10;
 const ll LINF = 1001002003004005006ll;
 const int INF = 1001001001;
-#define dame { puts("-1"); return 0;}
+#define ng { puts("-1"); return 0;}
 #define yn {puts("Yes");}else{puts("No");}
 const int MX = 200005;
 
-int main() {
-  ll x, y, a, b;
-  cin >> x >> y >> a >> b;
-  ll ans = 0;
-while(1){
-    if(y/x < a) break;
-    if(x*a >= x+b) break;
-    if(x*a >= y) break;
-    x = x * a;
-    ans++;
+
+void printvi(vi const &input){
+  rep(i, input.size()) {
+    cout << input[i] << ' ';
   }
-  ans += (y - x - 1) / b;
-  cout << ans << endl;
+}
+
+void printvl(vl const &input){
+  rep(i, input.size()) {
+    cout << input[i] << ' ';
+  }
+}
+
+void printvp(vp const &input){
+  rep(i, input.size()) {
+    cout << input[i].fi << ' ' << input[i].se << endl;
+  }
+}
+
+int main() {
+  int n, m;
+  cin >> n >> m;
+  if(m<0 || (m && m >= n-1)) ng;
+  int x = 2;
+  cout << 1 << " " << (m*2+4) << endl;
+  rep(i, n-1){
+    if(i == m+1) ++x;
+    cout << x << " " << x+1 << endl;
+    x += 2;
+  }
   return 0;
 }
